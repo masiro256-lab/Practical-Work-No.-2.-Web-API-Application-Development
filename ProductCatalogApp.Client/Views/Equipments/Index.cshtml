@@ -1,0 +1,67 @@
+@model IEnumerable<Equipment>
+
+@{
+    ViewData["Title"] = "Оборудование";
+}
+
+<h1>Оборудование</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Добавить оборудование</a>
+</p>
+
+<form asp-action="Index" method="get" class="row g-2 mb-3">
+    <div class="col-sm-6 col-md-4">
+        <label for="productionSiteId" class="form-label">Производственный участок</label>
+        <select id="productionSiteId"
+                name="productionSiteId"
+                asp-items="ViewBag.ProductionSiteId"
+                class="form-select">
+            <option value="">Все участки</option>
+        </select>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <label for="search" class="form-label">Поиск</label>
+        <input id="search" name="search" value="@ViewData["Search"]" class="form-control"
+               placeholder="Название, модель или инвентарный номер" />
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Фильтровать</button>
+        <a asp-action="Index" class="btn btn-secondary">Сбросить</a>
+    </div>
+</form>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Оборудование не найдено.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Model)</th>
+                <th>@Html.DisplayNameFor(model => model.InventoryNumber)</th>
+                <th>@Html.DisplayNameFor(model => model.ProductionSiteName)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Model</td>
+                    <td>@item.InventoryNumber</td>
+                    <td>@item.ProductionSiteName</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

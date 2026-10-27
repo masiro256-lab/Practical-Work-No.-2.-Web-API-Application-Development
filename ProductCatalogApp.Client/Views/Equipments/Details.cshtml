@@ -1,0 +1,30 @@
+@model Equipment
+
+@{
+    ViewData["Title"] = "Оборудование: " + Model.Name;
+}
+
+<h1>Оборудование</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Model)</dt>
+        <dd class="col-sm-9">@Model.Model</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.InventoryNumber)</dt>
+        <dd class="col-sm-9">@Model.InventoryNumber</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ProductionSiteName)</dt>
+        <dd class="col-sm-9">
+            <a asp-controller="ProductionSites" asp-action="Details" asp-route-id="@Model.ProductionSiteId">@Model.ProductionSiteName</a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Изменить</a> |
+    <a asp-action="Index">К списку</a>
+</div>

@@ -1,0 +1,51 @@
+@model ProductionSiteDetails
+
+@{
+    ViewData["Title"] = "Участок: " + Model.Name;
+}
+
+<h1>Производственный участок</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Description)</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+    </dl>
+
+    <h4>Оборудование участка</h4>
+
+    @if (Model.Equipment.Count > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Модель</th>
+                    <th>Инвентарный номер</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var equipment in Model.Equipment)
+                {
+                    <tr>
+                        <td>@equipment.Name</td>
+                        <td>@equipment.Model</td>
+                        <td>@equipment.InventoryNumber</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>К этому участку оборудование пока не привязано.</p>
+    }
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Изменить</a> |
+    <a asp-action="Index">К списку</a>
+</div>

@@ -1,0 +1,36 @@
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Главная";
+    var swaggerUrl = Configuration["ApiSettings:BaseUrl"]?.TrimEnd('/') + "/swagger";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4">Список производственных участков и перечень установленного на них оборудования</h1>
+    <p class="lead">Учебное веб-приложение для учёта производственных площадок и размещённого на них оборудования.</p>
+    <p class="text-muted">
+        Клиентская часть: данные берутся из серверной части (Web API).
+        <a href="@swaggerUrl" target="_blank" rel="noopener">Документация API (Swagger)</a>
+    </p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-5 mb-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <h3 class="card-title">Производственные участки</h3>
+                <p class="card-text">Просмотр, поиск, создание, редактирование и удаление производственных участков.</p>
+                <a asp-controller="ProductionSites" asp-action="Index" class="btn btn-primary">Перейти к участкам</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5 mb-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <h3 class="card-title">Оборудование</h3>
+                <p class="card-text">Просмотр, фильтрация по участку, создание, редактирование и удаление оборудования.</p>
+                <a asp-controller="Equipments" asp-action="Index" class="btn btn-primary">Перейти к оборудованию</a>
+            </div>
+        </div>
+    </div>
+</div>

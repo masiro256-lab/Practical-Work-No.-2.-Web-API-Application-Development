@@ -1,0 +1,31 @@
+@model Equipment
+
+@{
+    ViewData["Title"] = "Удаление оборудования";
+}
+
+<h1>Удаление оборудования</h1>
+
+<h3>Вы уверены, что хотите удалить это оборудование?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Model)</dt>
+        <dd class="col-sm-9">@Model.Model</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.InventoryNumber)</dt>
+        <dd class="col-sm-9">@Model.InventoryNumber</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ProductionSiteName)</dt>
+        <dd class="col-sm-9">@Model.ProductionSiteName</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">К списку</a>
+    </form>
+</div>
