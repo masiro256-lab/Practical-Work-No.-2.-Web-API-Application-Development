@@ -1,0 +1,23 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Локальные утилиты и дампы
+project_dump.txt
+README_for_github.txt
+make_readme.py
+
+# Клиентские библиотеки (bootstrap, jquery) — восстанавливаются через libman
+ProductCatalogApp.Client/wwwroot/lib/
